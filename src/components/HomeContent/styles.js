@@ -2,7 +2,7 @@ import styled, { css }  from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    margin-top: ${theme.spacings.small} 0;
+    margin-top: ${theme.spacings.xhuge} 0;
     min-height: 90vh;
   `}
 `;

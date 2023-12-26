@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import AuthApiService from '../../api/AuthService';
 import { useNavigate } from 'react-router-dom';
+import * as Styled from './styles';
 
 export const MainMenu = () => {
   const navigate = useNavigate();
@@ -13,10 +14,18 @@ export const MainMenu = () => {
     navigate('/login');
   }
 
+  const handleNavigateBanks = () => {
+    navigate('/banks');
+  }
+
+  const handleNavigateHome = () => {
+    navigate('/');
+  }
+
   return (
-    <Navbar expand="lg">
+    <Styled.NavContainer expand="lg" bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">Finance</Navbar.Brand>
+        <Nav.Link onClick={handleNavigateHome}>HOME</Nav.Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="ml-auto">
@@ -26,12 +35,12 @@ export const MainMenu = () => {
               <NavDropdown.Item href="#">Contas</NavDropdown.Item>
               <NavDropdown.Item href="#">Cartões de Crédito</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#">Bancos</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleNavigateBanks}>Bancos</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </Styled.NavContainer>
   );
 };

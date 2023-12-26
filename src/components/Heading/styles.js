@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../styles/theme";
 
 const titleSize = {
   small: (theme) => css`

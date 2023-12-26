@@ -1,4 +1,3 @@
-import { BankList } from '../BanksList';
 import * as Styled from './styles';
 import Container from 'react-bootstrap/Container';
 
@@ -7,8 +6,7 @@ export const HomeContent = ({ children }) => {
   <Styled.Container>
     <Container>
       <Styled.Paragraph>
-        Home content Bemvindo!
-        <BankList/>
+        Selecione as opções no menu.
       </Styled.Paragraph>
     </Container>
   </Styled.Container>

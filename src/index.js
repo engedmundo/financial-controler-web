@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Banks from './pages/Banks';
 
 const isAuthenticated = () => {
   const accessToken = localStorage.getItem("accessToken");
@@ -25,6 +26,10 @@ root.render(
           <Route
             path="/"
             element={<PrivateRoute element={<Home />} />}
+          />
+          <Route
+            path="/banks"
+            element={<PrivateRoute element={<Banks />} />}
           />
           <Route path="/login" element={<Login />} />
         </Routes>

@@ -1,35 +1,47 @@
 import Table from 'react-bootstrap/Table';
+import { Heading } from '../Heading';
+import { useEffect, useState } from 'react';
+import BankApiService from '../../api/BankService';
+import * as Styled from './styles';
 
-export function BankList() {
+export function BanksList() {
+  const [banksData, setBanksData] = useState([]);
+
+  const fetchBanksData = async () => {
+    const response = await BankApiService.listBanks();
+    setBanksData(response);
+    return
+  }
+
+  useEffect(() => {
+    fetchBanksData();
+  }, []);
+
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
+    <Styled.Container>
+      <Styled.TableTitle>
+        <h1>
+          Listagem de bancos
+        </h1>
+      </Styled.TableTitle>
+      <Table hover>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nome do banco</th>
+            <th>Código</th>
+          </tr>
+        </thead>
+        <tbody>
+          {banksData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.code}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Styled.Container>
   );
 }
