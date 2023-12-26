@@ -5,11 +5,16 @@ import { theme } from './styles/theme';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
-// import dotenv from 'dotenv';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+const isAuthenticated = () => {
+  const accessToken = localStorage.getItem("accessToken");
+  return accessToken ? true : false;
+};
 
-// dotenv.config();
+const PrivateRoute = ({ element }) => {
+  return isAuthenticated() ? element : <Navigate to="/login" />;
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,8 +22,11 @@ root.render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/login" element={<Login />}/>
+          <Route
+            path="/"
+            element={<PrivateRoute element={<Home />} />}
+          />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

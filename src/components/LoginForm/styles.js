@@ -1,6 +1,7 @@
-import styled, { css }  from 'styled-components';
+import styled, { css } from 'styled-components';
+import Card from 'react-bootstrap/Card';
 
-export const Container = styled.div`
+export const CardContainer = styled(Card)`
   ${({ theme }) => css`
     display: block;
     border: 1px solid ${theme.colors.secondaryColor};
