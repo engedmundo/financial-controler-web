@@ -15,6 +15,9 @@ class AuthApiService {
       const url = `${BASE_URL}/token/`;
       const response = await axios.post(url, { username, password });
       const { access, refresh } = response.data;
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('accessToken', access);
+      sessionStorage.setItem('refreshToken', refresh);
       return {
         code: response.status,
         accessToken: access,
@@ -44,11 +47,12 @@ class AuthApiService {
     }
   }
 
-  // static logout() {
-  //   localStorage.removeItem("accessToken");
-  //   localStorage.removeItem("refreshToken");
-  //   return
-  // }
+  static logout() {
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("accessToken");
+    sessionStorage.removeItem("refreshToken");
+    return
+  }
 
   // static async checkAcessTokenValidity() {
   //   try {

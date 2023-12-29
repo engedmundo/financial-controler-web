@@ -2,11 +2,14 @@ import React, { createContext, useState, ReactNode } from 'react';
 import UserContextProps from '../types/userContext';
 
 const noop = () => { }
+const sessionUsername = sessionStorage.getItem('username');
+const sessionAccessToken = sessionStorage.getItem('accessToken');
+const sessionRefreshToken = sessionStorage.getItem('RefreshToken');
 
 export const UserContext = createContext<UserContextProps>({
-  username: '',
-  accessToken: '',
-  refreshToken: '',
+  username: sessionUsername ? sessionUsername : '',
+  accessToken: sessionAccessToken ? sessionAccessToken : '',
+  refreshToken: sessionRefreshToken ? sessionRefreshToken : '',
   setUsername: noop,
   setAccessToken: noop,
   setRefreshToken: noop,
