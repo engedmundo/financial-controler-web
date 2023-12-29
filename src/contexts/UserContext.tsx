@@ -1,10 +1,15 @@
 import React, { createContext, useState, ReactNode } from 'react';
 import UserContextProps from '../types/userContext';
 
+const noop = () => { }
+
 export const UserContext = createContext<UserContextProps>({
   username: '',
   accessToken: '',
   refreshToken: '',
+  setUsername: noop,
+  setAccessToken: noop,
+  setRefreshToken: noop,
 });
 
 interface UserContextProviderProps {
