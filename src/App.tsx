@@ -1,12 +1,25 @@
-import { useState } from 'react'
+import { Routes, Route, Link, NavLink } from 'react-router-dom';
+
 import './App.css'
+import Home from './pages/Home';
+import Banks from './pages/Banks';
+import Accounts from './pages/Accounts';
+import Sidebar from './components/Sidebar';
+import Login from './pages/Login';
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>react app com ts</h1>
+      <Sidebar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/banks' element={<Banks />} />
+        <Route path='/accounts' element={<Accounts />} />
+        <Route path='/login' element={<Login />} />
+
+      </Routes>
     </>
   )
 }
