@@ -4,23 +4,24 @@ import './App.css'
 import Home from './pages/Home';
 import Banks from './pages/Banks';
 import Accounts from './pages/Accounts';
-import Sidebar from './components/Sidebar';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { MainMenu } from './components/MainMenu';
 
 
 function App() {
 
   return (
     <>
-      <Sidebar />
+      <MainMenu />
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route
           path='/'
           element={
             <PrivateRoute>
-              <Home/>
+              <Home />
             </PrivateRoute>
           }
         />
@@ -28,7 +29,7 @@ function App() {
           path='/banks'
           element={
             <PrivateRoute>
-              <Banks/>
+              <Banks />
             </PrivateRoute>
           }
         />
@@ -36,7 +37,7 @@ function App() {
           path='/accounts'
           element={
             <PrivateRoute>
-              <Accounts/>
+              <Accounts />
             </PrivateRoute>
           }
         />
