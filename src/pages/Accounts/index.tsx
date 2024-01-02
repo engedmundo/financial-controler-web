@@ -1,7 +1,9 @@
+import PageHeading from "../../components/PageHeading"
+
 const Accounts = () => {
   return (
     <div>
-      <h1>Listagem das contas</h1>
+      <PageHeading title={'Listagem das Contas'}/>
     </div>
   )
 }

@@ -1,10 +1,13 @@
-import React from 'react'
+import { Container } from 'react-bootstrap'
+import BanksList from '../../components/BanksList'
+import PageHeading from '../../components/PageHeading'
 
 const Banks = () => {
   return (
-    <div>
-      <h1>Listagem dos bancos</h1>
-    </div>
+    <Container>
+      <PageHeading title={'Listagem dos bancos'}/>
+      <BanksList />
+    </Container>
   )
 }
 

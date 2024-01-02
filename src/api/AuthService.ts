@@ -9,9 +9,10 @@ interface AuthResponse {
   refreshToken?: string;
 }
 
-interface AuthHeaders {
+export interface AuthHeaders {
   Authorization: string;
   'Content-Type': string;
+  [key: string]: string;
 }
 
 class AuthApiService {
@@ -61,12 +62,12 @@ class AuthApiService {
     return
   }
 
-  public static async getHeaders(accessToken: string, refreshToken: string): Promise<AuthHeaders> {
-    const validityResponse = await this.checkAccessTokenValidity(accessToken);
+  public static async getHeaders(): Promise<AuthHeaders> {
+    const validityResponse = await this.checkAccessTokenValidity();
 
     if (validityResponse.code !== 200) {
       try {
-        const refreshResponse = await this.refreshAccessToken(refreshToken);
+        const refreshResponse = await this.refreshAccessToken();
         return {
           'Authorization': `Bearer ${refreshResponse.accessToken}`,
           'Content-Type': 'application/json',
@@ -77,12 +78,13 @@ class AuthApiService {
       }
     }
     return {
-      'Authorization': `Bearer ${accessToken}`,
+      'Authorization': `Bearer ${sessionStorage.getItem('accessToken')}`,
       'Content-Type': 'application/json',
     }
   }
 
-  private static async checkAccessTokenValidity(accessToken: string): Promise<AuthResponse> {
+  private static async checkAccessTokenValidity(): Promise<AuthResponse> {
+    const accessToken = sessionStorage.getItem('accessToken');
     try {
       const url = `${BASE_URL}/token/verify/`;
       const response = await axios.post(url, { token: accessToken });
@@ -102,11 +104,13 @@ class AuthApiService {
     }
   }
 
-  static async refreshAccessToken(refreshToken: string): Promise<AuthResponse> {
+  static async refreshAccessToken(): Promise<AuthResponse> {
+    const refreshToken = sessionStorage.getItem('refreshToken');
     try {
       const url = `${BASE_URL}/token/refresh/`;
-      const response = await axios.post(url, { refresh: refreshToken });
-      const accessToken = response.data;
+      const headers = { 'Content-Type': 'application/json' }
+      const response = await axios.post(url, { refresh: refreshToken }, { headers });
+      const accessToken = response.data.access;
       sessionStorage.setItem("accessToken", accessToken);
       return {
         code: response.status,
@@ -118,8 +122,6 @@ class AuthApiService {
       throw new Error('Falha ao atualizar o token de acesso');
     }
   }
-
-
 }
 
 export default AuthApiService;

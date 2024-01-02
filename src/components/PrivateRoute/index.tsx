@@ -1,13 +1,14 @@
-import { FC, ReactNode, useContext } from 'react';
+import { FC, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserContext';
 
 interface PrivateRouteProps {
   children: ReactNode;
 }
 
 const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
-  const { username, accessToken, refreshToken } = useContext(UserContext);
+  const username: string | null = sessionStorage.getItem('username');
+  const accessToken: string | null = sessionStorage.getItem('accessToken');
+  const refreshToken: string | null = sessionStorage.getItem('refreshToken');
   const isAuthenticated = username && accessToken && refreshToken;
 
   return (
