@@ -1,4 +1,4 @@
-import { Container, Table } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import styles from './BanksList.module.css';
 import { useEffect, useState } from 'react';
 import BankApiService from '../../api/BankService';
@@ -23,8 +23,8 @@ const BanksList = () => {
       <table className={`${styles.tableContainer} mx-auto`}>
         <thead className={styles.tableHeader}>
           <tr>
-            <th>Nome do banco</th>
-            <th>Código</th>
+            <th className={styles.tableMainColumn}>Nome do banco</th>
+            <th className={styles.tableSecondaryColumn}>Código</th>
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
