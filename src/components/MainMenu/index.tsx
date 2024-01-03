@@ -20,7 +20,21 @@ export const MainMenu = () => {
             <Link to="/" onClick={() => navigate('/')}>Home</Link>
           </li>
           <li className={`${styles.navItem} ${styles.navItemRight}`}>
-            <Link to="#">News</Link>
+            Minhas Finanças
+            <ul className={styles.dropdown}>
+              <li>
+                <Link to="#">Histórico das contas</Link>
+              </li>
+              <li>
+                <Link to="#">Orçamentos</Link>
+              </li>
+              <li>
+                <Link to="#">Transações</Link>
+              </li>
+              {/* <li>
+                <Link to="/accounts" onClick={() => navigate('/accounts')}>Minhas Contas</Link>
+              </li> */}
+            </ul>
           </li>
           <li className={`${styles.navItem} ${styles.navItemRight}`}>
             Gerenciamento de contas
@@ -33,6 +47,17 @@ export const MainMenu = () => {
               </li>
               <li>
                 <Link to="/banks" onClick={() => navigate('/banks')}>Bancos</Link>
+              </li>
+            </ul>
+          </li>
+          <li className={`${styles.navItem} ${styles.navItemRight}`}>
+            Configurações
+            <ul className={styles.dropdown}>
+              <li>
+                <Link to="#">Categorias</Link>
+              </li>
+              <li>
+                <Link to="#">Minha família</Link>
               </li>
             </ul>
           </li>
