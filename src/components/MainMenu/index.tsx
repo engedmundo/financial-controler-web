@@ -43,7 +43,7 @@ export const MainMenu = () => {
                 <Link to="/accounts" onClick={() => navigate('/accounts')}>Minhas Contas</Link>
               </li>
               <li>
-                <Link to="#">Meus Cartões</Link>
+                <Link to="/credit-cards" onClick={() => navigate('/credit-cards')}>Meus Cartões</Link>
               </li>
               <li>
                 <Link to="/banks" onClick={() => navigate('/banks')}>Bancos</Link>

@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MainMenu } from './components/MainMenu';
+import CreditCards from './pages/CreditCards';
 
 
 function App() {
@@ -38,6 +39,14 @@ function App() {
           element={
             <PrivateRoute>
               <Accounts />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/credit-cards'
+          element={
+            <PrivateRoute>
+              <CreditCards />
             </PrivateRoute>
           }
         />
