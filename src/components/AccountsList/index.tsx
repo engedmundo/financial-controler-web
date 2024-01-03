@@ -3,6 +3,7 @@ import styles from './AccountsList.module.css';
 import { useEffect, useState } from 'react';
 import AccountApiResponse from '../../types/AccountsApiReponse';
 import AccountApiService from '../../api/AccountService';
+import { getAccountType } from '../../enums/AccountType';
 
 
 const AccountsList = () => {
@@ -37,8 +38,8 @@ const AccountsList = () => {
               <td>{item.name}</td>
               <td>{item.agency}</td>
               <td>{item.number}</td>
-              <td>{item.type}</td>
-              <td>{item.user.username}</td>
+              <td>{getAccountType(item.type)}</td>
+              <td>{item.user.first_name}</td>
               <td>{item.bank.name}</td>
             </tr>
           ))}
