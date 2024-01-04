@@ -7,8 +7,8 @@ type AccountApiResponse = {
   agency: string;
   number: string;
   type: string;
-  user: SimpleUserApiResponse;
-  bank: BankApiResponse;
+  user?: SimpleUserApiResponse;
+  bank?: BankApiResponse;
 }
 
 export default AccountApiResponse

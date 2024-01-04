@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MainMenu } from './components/MainMenu';
 import CreditCards from './pages/CreditCards';
+import Transactions from './pages/Transactions';
 
 
 function App() {
@@ -47,6 +48,14 @@ function App() {
           element={
             <PrivateRoute>
               <CreditCards />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/transactions'
+          element={
+            <PrivateRoute>
+              <Transactions />
             </PrivateRoute>
           }
         />

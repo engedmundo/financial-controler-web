@@ -29,11 +29,8 @@ export const MainMenu = () => {
                 <Link to="#">Orçamentos</Link>
               </li>
               <li>
-                <Link to="#">Transações</Link>
+                <Link to="/transactions" onClick={() => navigate('/transactions')}>Transações</Link>
               </li>
-              {/* <li>
-                <Link to="/accounts" onClick={() => navigate('/accounts')}>Minhas Contas</Link>
-              </li> */}
             </ul>
           </li>
           <li className={`${styles.navItem} ${styles.navItemRight}`}>
