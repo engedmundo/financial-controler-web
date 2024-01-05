@@ -39,8 +39,8 @@ const AccountsList = () => {
               <td>{item.agency}</td>
               <td>{item.number}</td>
               <td>{getAccountType(item.type)}</td>
-              <td>{item.user.first_name}</td>
-              <td>{item.bank.name}</td>
+              <td>{item.user!.first_name}</td>
+              <td>{item.bank!.name}</td>
             </tr>
           ))}
         </tbody>
