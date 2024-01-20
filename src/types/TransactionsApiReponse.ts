@@ -20,8 +20,19 @@ export type TransactionsData = {
   description: string;
 }
 
+export type CategoriesSummary = {
+  category: string;
+  percentual: number;
+  total: number;
+}
+
+export type ReceiptExpenseSummary = {
+  categories: CategoriesSummary[];
+  total: number;
+}
+
 export type TransactionSummary = {
-  receipt: number;
-  expense: number;
+  receipt: ReceiptExpenseSummary;
+  expense: ReceiptExpenseSummary;
   balance: number;
 }

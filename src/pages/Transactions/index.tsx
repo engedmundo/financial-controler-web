@@ -11,8 +11,14 @@ import TransactionCSVForm from "../../components/TransactionCSVForm";
 const Transactions = () => {
   const [transactionsData, setTransactionsData] = useState<TransactionsData[]>([]);
   const [summaryData, setSummaryData] = useState<TransactionSummary>({
-    receipt: 0,
-    expense: 0,
+    receipt: {
+      categories: [],
+      total: 0,
+    },
+    expense: {
+      categories: [],
+      total: 0
+    },
     balance: 0,
   });
   const [showModal, setShowModal] = useState(false);
