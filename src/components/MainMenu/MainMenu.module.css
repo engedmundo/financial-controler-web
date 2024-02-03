@@ -1,0 +1,80 @@
+.navContainer {
+    height: 60px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
+    transition: .3s;
+    background: var(--bg-darkBg);
+    display: flex;
+    /* Usar flexbox para centralizar verticalmente os itens */
+    align-items: center;
+    /* Centralizar verticalmente os itens */
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.navItem {
+    color: var(--colorWhite);
+}
+
+.navItemLeft {
+    margin-right: auto;
+    /* Empurra este item para a esquerda */
+}
+
+.navItemRight {
+    margin-right: 20px;
+}
+
+.navItem a {
+    color: var(--colorWhite);
+    cursor: pointer;
+}
+
+.navItem a:hover {
+    color: var(--bs-info);
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    /* Inicialmente, esconda o dropdown */
+    list-style: none;
+    position: absolute;
+    background-color: var(--bg-darkBg);
+    padding: 15px;
+    margin: 0;
+    box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
+    transition: .3s;
+    border-radius: 5px;
+}
+
+.navItem:hover .dropdown {
+    display: block;
+    /* Exiba o dropdown quando o item for hover */
+}
+
+.dropdown li {
+    margin: 0;
+    padding: 5px;
+    text-align: left;
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.dropdown a:hover {
+    color: var(--bs-info);
+    cursor: pointer;
+}
