@@ -24,8 +24,8 @@ const TransactionCSVForm = () => {
 
   const [errorMessage] = useState('');
   const [accountsData, setAccountsData] = useState<AccountApiResponse[]>([]);
-  const [creditCards, setCreditCards] = useState([]);
-  const [familyUsers, setFamilyUsers] = useState([]);
+  // const [creditCards, setCreditCards] = useState([]);
+  // const [familyUsers, setFamilyUsers] = useState([]);
 
 
   const fetchAccountsData = async () => {

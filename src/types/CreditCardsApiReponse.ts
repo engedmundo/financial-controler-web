@@ -6,8 +6,8 @@ type CreditCardApiResponse = {
   name: string;
   expense_limit: number;
   payment_day: number;
-  user?: SimpleUserApiResponse;
-  bank?: BankApiResponse;
+  user: SimpleUserApiResponse;
+  bank: BankApiResponse;
 }
 
 export default CreditCardApiResponse
