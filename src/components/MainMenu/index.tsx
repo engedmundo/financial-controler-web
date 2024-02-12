@@ -31,6 +31,9 @@ export const MainMenu = () => {
               <li>
                 <Link to="/transactions" onClick={() => navigate('/transactions')}>Transações</Link>
               </li>
+              <li>
+                <Link to="/transactions-by-family" onClick={() => navigate('/transactions-by-family')}>Transações por família</Link>
+              </li>
             </ul>
           </li>
           <li className={`${styles.navItem} ${styles.navItemRight}`}>

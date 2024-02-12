@@ -29,8 +29,8 @@ const TransactionsList: React.FC<TransactionsDataProps> = ({ data }) => {
               <td>{item.description}</td>
               <td>{item.user.first_name}</td>
               <td>{item.date}</td>
-              <td>{item.account.name}</td>
-              <td>{item.credit_card.name}</td>
+              <td>{item.account ? item.account.name : 'N/D'}</td>
+              <td>{item.credit_card ? item.credit_card.name : 'N/D'}</td>
               <td>{item.category.name}</td>
               <td>{getTransactionType(item.type)}</td>
               <td>R$ {Number(item.amount).toLocaleString('pt-BR', {

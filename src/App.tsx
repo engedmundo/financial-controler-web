@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { MainMenu } from './components/MainMenu';
 import CreditCards from './pages/CreditCards';
 import Transactions from './pages/Transactions';
+import TransactionsByFamily from './pages/TransactionsByFamily';
 
 
 function App() {
@@ -56,6 +57,14 @@ function App() {
           element={
             <PrivateRoute>
               <Transactions />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/transactions-by-family'
+          element={
+            <PrivateRoute>
+              <TransactionsByFamily />
             </PrivateRoute>
           }
         />

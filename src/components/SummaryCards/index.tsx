@@ -17,7 +17,6 @@ const SummaryCards: React.FC<SummaryDataProps> = ({ data }) => {
           <Card className={styles.card}>
             <Card.Body>
               <Card.Title>Despesas: R$ {printBrMoney(data.expense.total)}</Card.Title>
-              <Card.Text>
                 <div>
                   <table className={`${styles.tableContainer} mx-auto`}>
                     <thead className={styles.tableHeader}>
@@ -40,7 +39,6 @@ const SummaryCards: React.FC<SummaryDataProps> = ({ data }) => {
                     </tbody>
                   </table>
                 </div>
-              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
@@ -48,7 +46,6 @@ const SummaryCards: React.FC<SummaryDataProps> = ({ data }) => {
           <Card className={styles.card}>
             <Card.Body>
               <Card.Title>Receitas: R$ {printBrMoney(data.receipt.total)}</Card.Title>
-              <Card.Text>
                 <div>
                   <table className={`${styles.tableContainer} mx-auto`}>
                     <thead className={styles.tableHeader}>
@@ -71,7 +68,6 @@ const SummaryCards: React.FC<SummaryDataProps> = ({ data }) => {
                     </tbody>
                   </table>
                 </div>
-              </Card.Text>
             </Card.Body>
           </Card >
         </Col>
