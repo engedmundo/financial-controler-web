@@ -8,6 +8,11 @@ export type TransactionsApiResponse = {
   summary: TransactionSummary;
 }
 
+export type CreatedTransactionApiResponse = {
+  message: string;
+  transaction: TransactionsData;
+}
+
 export type TransactionsData = {
   id: number;
   user: SimpleUserApiResponse;

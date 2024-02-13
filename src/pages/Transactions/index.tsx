@@ -5,8 +5,7 @@ import { TransactionSummary, TransactionsData } from "../../types/TransactionsAp
 import TransactionApiService from "../../api/TransactionService";
 import SummaryCards from "../../components/SummaryCards";
 import { Button, Modal } from "react-bootstrap";
-// import { Form } from "react-router-dom";
-import TransactionCSVForm from "../../components/TransactionCSVForm";
+import TransactionForm from "../../components/TransactionForm";
 
 const Transactions = () => {
   const [transactionsData, setTransactionsData] = useState<TransactionsData[]>([]);
@@ -21,10 +20,16 @@ const Transactions = () => {
     },
     balance: 0,
   });
-  const [showModal, setShowModal] = useState(false);
+  const [showModalForm, setShowModalForm] = useState<boolean>(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+  const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
 
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  const handleCloseModalForm = () => {
+    setShowModalForm(false);
+    setShowSuccessMessage(false);
+    setShowErrorMessage(false);
+  }
+  const handleShowModalForm = () => setShowModalForm(true);
 
   const fetchTransactionsData = async () => {
     try {
@@ -39,27 +44,41 @@ const Transactions = () => {
 
   useEffect(() => {
     fetchTransactionsData();
-  }, []);
+  }, [showModalForm]);
+
+  const handleSubmitForm = (success: boolean): void => {
+    setShowModalForm(false);
+    if (success) {
+      setShowSuccessMessage(true);
+    } else {
+      setShowErrorMessage(true);
+    }
+  };
 
   return (
     <div>
       <PageHeading title={'Transações'} />
       <div className="mb-3">
-        <Button variant="outline-dark" onClick={handleShowModal}>
-          Cadastrar transações por CSV
+        <Button variant="outline-dark" onClick={handleShowModalForm}>
+          + Transação
         </Button>
       </div>
+      {/* Exibição da mensagem de sucesso ou erro */}
+      {showSuccessMessage && <p style={{ color: 'green' }}>Transação criada com sucesso!</p>}
+      {showErrorMessage && <p style={{ color: 'red' }}>Erro ao criar transação. Por favor, tente novamente mais tarde.</p>}
+      
       <SummaryCards data={summaryData} />
       <TransactionsList data={transactionsData} />
 
-      <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal show={showModalForm} onHide={handleCloseModalForm}>
         <Modal.Header closeButton>
-          <Modal.Title>Inserir grupo de transações</Modal.Title>
+          <Modal.Title>Nova transação</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TransactionCSVForm />
+          <TransactionForm onSubmit={handleSubmitForm}/>
         </Modal.Body>
       </Modal>
+
     </div>
   )
 }
